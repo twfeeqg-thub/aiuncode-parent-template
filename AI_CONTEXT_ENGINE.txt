@@ -1,0 +1,711 @@
+=== AIUNCODE AI CONTEXT ENGINE (FULL CODE) ===
+Generated on: Sat Jan 17 12:35:05 PM UTC 2026
+
+[INSTRUCTION: This file is for LLM Context. Use it to understand logic and generate code.]
+
+1. CORE SYSTEM FILES CONTENT:
+
+>>>>> START_FILE: config.json <<<<<
+{
+  "site": {
+    "name": "AIUNCODE",
+    "contactButton": "ابدأ الآن",
+    "copyright": "© 2026 AIUNCODE. جميع الحقوق محفوظة.",
+    "privacyPolicyLink": "/privacy",
+    "termsOfServiceLink": "/terms"
+  },
+  "pwa": {
+    "appName": "AIUNCODE Platform",
+    "appShortName": "AIUNCODE",
+    "appDescription": "منصتك المتكاملة للحلول الرقمية والذكاء الاصطناعي.",
+    "themeColor": "#0A0A0A",
+    "backgroundColor": "#FFFFFF"
+  },
+  "features": {
+    "showHeader": true,
+    "showHero": true,
+    "showServices": true,
+    "showTeam": true,
+    "showFaq": true,
+    "showQrCode": true,
+    "showContact": true,
+    "showFooter": true,
+    "showSmartAssistant": true
+  },
+  "content": {
+    "hero": {
+      "title": "مستقبل أعمالك يبدأ مع AIUNCODE",
+      "subtitle": "نحول أفكارك إلى واقع رقمي باستخدام المحركات الذكية، صفحات الهبوط فائقة السرعة، وتطبيقات PWA المتطورة.",
+      "ctaButton": "استكشف الحلول الذكية"
+    },
+    "servicesSection": {
+      "title": "حلولنا الرقمية المتكاملة",
+      "subtitle": "نقدم تقنيات متطورة تهدف لزيادة أرباحك وأتمتة أعمالك.",
+      "categories": [
+        {
+          "categoryName": "المحركات الذكية",
+          "services": [
+            {
+              "name": "تطوير PWA الاحترافي",
+              "description": "تطبيقات ويب تعمل بدون إنترنت، سريعة، وتثبت مباشرة على الهواتف.",
+              "imageUrl": "/images/services/pwa-development.jpg",
+              "cta": { "text": "اطلب خدمتك", "href": "#contact" }
+            }
+          ]
+        }
+      ]
+    },
+    "teamMembersSection": {
+      "title": "خبراء AIUNCODE",
+      "subtitle": "فريق تقني متخصص لضمان نجاح مشروعك.",
+      "members": [
+        {
+          "name": "م. تميم الزهراني",
+          "specialty": "كبير المهندسين التقنيين",
+          "bio": "خبير في بناء المعماريات السحابية وحلول الأتمتة الذكية.",
+          "imageUrl": "/images/doctors/doctor-male-1.jpg"
+        }
+      ]
+    },
+    "faqSection": {
+      "title": "الأسئلة الشائعة",
+      "subtitle": "كل ما تود معرفته عن منصة AIUNCODE.",
+      "faqs": [
+        {
+          "question": "ما الذي يميز AIUNCODE؟",
+          "answer": "نحن نبني محركات ذكية تدار بملفات JSON."
+        }
+      ]
+    },
+    "contactForm": {
+      "title": "لنبدأ رحلة النجاح",
+      "submitButton": "إرسال الطلب",
+      "consentText": "أوافق على معالجة بياناتي للتواصل معي.",
+      "fields": {
+        "name": { "show": true, "label": "الاسم", "placeholder": "أدخل اسمك الكريم", "required": true },
+        "email": { "show": true, "label": "البريد الإلكتروني", "placeholder": "example@domain.com", "required": true },
+        "phone": { "show": true, "label": "رقم الواتساب", "placeholder": "5xxxxxxxx", "required": true },
+        "message": { "show": true, "label": "تفاصيل المشروع", "placeholder": "اشرح لنا رؤيتك باختصار...", "required": true },
+        "service": { "show": true, "label": "نوع الخدمة", "options": ["بناء محرك ذكي", "تطبيق PWA", "أتمتة n8n"], "required": true }
+      }
+    }
+  },
+  "guidedAssistant": {
+    "chatTitle": "مساعد AIUNCODE",
+    "buttonLabel": "تحدث مع المساعد الذكي",
+    "root": {
+      "message": "أهلاً بك في AIUNCODE!",
+      "options": [ { "text": "أريد بناء منصة ذكية", "nextId": "servicesNode" }, { "text": "استفسار عن التكلفة", "nextId": "pricingNode" } ]
+    }
+  }
+}
+
+<<<<< END_FILE: config.json >>>>>
+
+>>>>> START_FILE: app/page.tsx <<<<<
+"use client";
+import config from "../config.json";
+import dynamic from 'next/dynamic';
+
+const Header = dynamic(() => import('@/components/common/Header'));
+const HeroSection = dynamic(() => import('@/components/common/HeroSection'));
+const ContactSection = dynamic(() => import('@/components/common/ContactSection'));
+const Footer = dynamic(() => import('@/components/common/Footer'));
+const FaqSection = dynamic(() => import('@/components/common/FaqSection'));
+const ServicesSection = dynamic(() => import('@/components/sectors/Generic/ServicesSection'));
+const TeamMembersSection = dynamic(() => import('@/components/sectors/Generic/TeamMembersSection'));
+const SmartAmbassadorGuided = dynamic(() => import('@/components/ui/SmartAmbassadorGuided').then(mod => mod.SmartAmbassadorGuided));
+
+export default function LandingPage() {
+  return (
+    <main className="w-full" dir="rtl">
+      {/* تمرير بيانات الموقع للهيدر */}
+      {config.features.showHeader && <Header data={config.site} />}
+      
+      {/* تمرير بيانات الهيرو */}
+      {config.features.showHero && <HeroSection data={config.content.hero} />}
+      
+      {/* تمرير بيانات الخدمات */}
+      {config.features.showServices && <ServicesSection data={config.content.servicesSection} />}
+      
+      {/* تمرير بيانات الفريق */}
+      {config.features.showTeam && <TeamMembersSection data={config.content.teamMembersSection} />}
+      
+      {/* تمرير بيانات الأسئلة الشائعة */}
+      {config.features.showFaq && <FaqSection data={config.content.faqSection} />}
+      
+      {/* تمرير بيانات التواصل */}
+      {config.features.showContact && <ContactSection data={config.content.contactForm} />}
+      
+      {/* تمرير بيانات الفوتر */}
+      {config.features.showFooter && <Footer data={config.site} />}
+      
+      {/* تمرير إعدادات المساعد الذكي */}
+      {config.features.showSmartAssistant && <SmartAmbassadorGuided config={config.guidedAssistant} />}
+    </main>
+  );
+}
+
+<<<<< END_FILE: app/page.tsx >>>>>
+
+>>>>> START_FILE: lib/supabaseClient.ts <<<<<
+import { createClient } from '@supabase/supabase-js'
+
+// قراءة المتغيرات من بيئة العمل (Vercel)
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+// التحقق من وجود المتغيرات لضمان عدم حدوث أخطاء
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error("Supabase URL and Anon Key are not defined in environment variables.");
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+<<<<< END_FILE: lib/supabaseClient.ts >>>>>
+
+>>>>> START_FILE: app/layout.tsx <<<<<
+// app/layout.tsx
+
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import config from "../config.json";
+import { ClientProviders } from "./providers"; // --- جديد: استيراد المكون الوسيط
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: config.pwa.appName,
+  description: config.pwa.appDescription,
+  manifest: "/manifest.webmanifest", // تعديل المسار ليكون متوافقًا مع Vercel
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/public/apple-icon.png", // تعديل المسار ليكون صحيحًا
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: config.pwa.themeColor,
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ar" dir="rtl">
+      <body className={inter.className}>
+        {/* --- جديد: تغليف المحتوى بـ ClientProviders --- */}
+        <ClientProviders>
+          {children}
+        </ClientProviders>
+      </body>
+    </html>
+  );
+}
+
+<<<<< END_FILE: app/layout.tsx >>>>>
+
+>>>>> START_FILE: components/sectors/Generic/OffersSection.tsx <<<<<
+// File: components/sectors/Generic/OffersSection.tsx
+
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
+// --- تعريف الأنواع لضمان سلامة الكود ---
+// هذا يضمن أن البيانات القادمة من config.json لها نفس البنية المتوقعة
+
+interface Offer {
+  id: string;
+  title: string;
+  description: string;
+  newPrice: string;
+  oldPrice?: string; // اختياري
+  validUntil: string;
+  ctaText: string;
+  isFeatured: boolean;
+  complianceText?: string; // اختياري
+}
+
+interface OffersConfig {
+  title: string;
+  subtitle: string;
+  offers: Offer[];
+}
+
+interface OffersSectionProps {
+  data: OffersConfig;
+}
+
+// --- المكون الرئيسي ---
+
+export default function OffersSection({ data }: OffersSectionProps) {
+  // دالة صغيرة للمساعدة في تنسيق التاريخ
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('ar-EG', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+
+  return (
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+      <div className="container px-4 md:px-6">
+        {/* عنوان ووصف القسم */}
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{data.title}</h2>
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              {data.subtitle}
+            </p>
+          </div>
+        </div>
+
+        {/* شبكة عرض البطاقات */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {data.offers.map((offer) => (
+            <Card key={offer.id} className="flex flex-col relative overflow-hidden">
+              {/* شريط "العرض المميز" */}
+              {offer.isFeatured && (
+                <Badge className="absolute top-4 right-4">عرض مميز</Badge>
+              )}
+              
+              <CardHeader>
+                <CardTitle>{offer.title}</CardTitle>
+                <CardDescription>{offer.description}</CardDescription>
+              </CardHeader>
+              
+              <CardContent className="flex-grow">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-bold">{offer.newPrice}</span>
+                  {offer.oldPrice && (
+                    <span className="text-lg font-medium text-muted-foreground line-through">
+                      {offer.oldPrice}
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  صالح حتى: {formatDate(offer.validUntil)}
+                </p>
+              </CardContent>
+              
+              <CardFooter className="flex flex-col items-start gap-4">
+                <Button className="w-full">{offer.ctaText}</Button>
+                {offer.complianceText && (
+                  <p className="text-xs text-center w-full text-muted-foreground">
+                    {offer.complianceText}
+                  </p>
+                )}
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+<<<<< END_FILE: components/sectors/Generic/OffersSection.tsx >>>>>
+
+>>>>> START_FILE: components/sectors/Generic/ProfileSection.tsx <<<<<
+// File: components/sectors/Generic/ProfileSection.tsx
+
+"use client";
+
+import { useState } from "react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { User, Edit, Save, X, AlertTriangle, ShieldCheck, Trash2 } from "lucide-react"; // استيراد أيقونات واضحة
+import Link from "next/link";
+
+// --- تعريف الأنواع لضمان سلامة الكود ---
+// هذا يضمن أن البيانات القادمة من config.json لها نفس البنية المتوقعة
+type ProfileData = {
+  title: string;
+  editButtonText: string;
+  saveButtonText: string;
+  cancelButtonText: string;
+  userData: {
+    name: string;
+    phone: string;
+    email: string;
+  };
+  compliance: {
+    privacyNotice: { text: string; linkText: string; href: string; };
+    reportIssue: { text: string; linkText: string; href: string; };
+    deleteAccount: { text: string; linkText: string; href: string; };
+  };
+};
+
+interface ProfileSectionProps {
+  data: ProfileData;
+}
+
+export default function ProfileSection({ data }: ProfileSectionProps) {
+  // --- إدارة الحالة ---
+  // isEditing: لتتبع ما إذا كنا في وضع العرض أو التعديل
+  const [isEditing, setIsEditing] = useState(false);
+  // formData: لتخزين قيم حقول الإدخال أثناء التعديل
+  const [formData, setFormData] = useState(data.userData);
+
+  // --- معالجات الأحداث ---
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSave = () => {
+    // في المستقبل، هنا سنقوم باستدعاء دالة لإرسال البيانات إلى Supabase
+    console.log("Saving data:", formData);
+    setIsEditing(false);
+    // يمكنك تحديث الحالة الرئيسية للتطبيق هنا إذا لزم الأمر
+  };
+
+  const handleCancel = () => {
+    // إعادة تعيين بيانات النموذج إلى الأصلية عند الإلغاء
+    setFormData(data.userData);
+    setIsEditing(false);
+  };
+
+  return (
+    <div className="w-full max-w-2xl mx-auto p-4 md:p-6">
+      <Card>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <User className="h-6 w-6 text-primary" />
+              <CardTitle>{data.title}</CardTitle>
+            </div>
+            {!isEditing && (
+              <Button variant="outline" size="sm" onClick={() => setIsEditing(true)}>
+                <Edit className="h-4 w-4 mr-2" />
+                {data.editButtonText}
+              </Button>
+            )}
+          </div>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* حقول عرض أو تعديل البيانات */}
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="name">الاسم</Label>
+              {isEditing ? (
+                <Input id="name" value={formData.name} onChange={handleInputChange} />
+              ) : (
+                <p className="text-muted-foreground pt-2">{formData.name}</p>
+              )}
+            </div>
+            <div>
+              <Label htmlFor="phone">رقم الجوال</Label>
+              {isEditing ? (
+                <Input id="phone" value={formData.phone} onChange={handleInputChange} />
+              ) : (
+                <p className="text-muted-foreground pt-2">{formData.phone}</p>
+              )}
+            </div>
+            <div>
+              <Label htmlFor="email">البريد الإلكتروني</Label>
+              {isEditing ? (
+                <Input id="email" type="email" value={formData.email} onChange={handleInputChange} />
+              ) : (
+                <p className="text-muted-foreground pt-2">{formData.email}</p>
+              )}
+            </div>
+          </div>
+
+          {/* أزرار الحفظ والإلغاء في وضع التعديل */}
+          {isEditing && (
+            <div className="flex justify-end gap-2 pt-4">
+              <Button variant="outline" onClick={handleCancel}>
+                <X className="h-4 w-4 mr-2" />
+                {data.cancelButtonText}
+              </Button>
+              <Button onClick={handleSave}>
+                <Save className="h-4 w-4 mr-2" />
+                {data.saveButtonText}
+              </Button>
+            </div>
+          )}
+        </CardContent>
+        <CardFooter className="flex flex-col items-start gap-4 text-sm text-muted-foreground border-t pt-6">
+          {/* قسم الامتثال وحماية البيانات */}
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-green-600" />
+            <p>
+              {data.compliance.privacyNotice.text}{" "}
+              <Link href={data.compliance.privacyNotice.href} className="underline hover:text-primary">
+                {data.compliance.privacyNotice.linkText}
+              </Link>
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="h-4 w-4 text-yellow-600" />
+            <p>
+              {data.compliance.reportIssue.text}{" "}
+              <Link href={data.compliance.reportIssue.href} className="underline hover:text-primary">
+                {data.compliance.reportIssue.linkText}
+              </Link>
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Trash2 className="h-4 w-4 text-red-600" />
+            <p>
+              {data.compliance.deleteAccount.text}{" "}
+              <Link href={data.compliance.deleteAccount.href} className="underline hover:text-primary">
+                {data.compliance.deleteAccount.linkText}
+              </Link>
+            </p>
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  );
+}
+
+<<<<< END_FILE: components/sectors/Generic/ProfileSection.tsx >>>>>
+
+>>>>> START_FILE: components/sectors/Generic/ServicesSection.tsx <<<<<
+// components/sectors/Generic/ServicesSection.tsx
+
+import React from 'react';
+import Image from 'next/image';
+
+// أولاً: نُعرّف أنواع البيانات (Types) باستخدام TypeScript
+// هذا يضمن أن البيانات التي ستأتي من ملف config.json ستكون بالشكل الصحيح
+// ويساعد في تجنب الأخطاء أثناء البرمجة.
+
+interface Cta {
+  text: string;
+  href: string;
+}
+
+interface Service {
+  name: string;
+  description: string;
+  imageUrl: string;
+  cta: Cta;
+}
+
+interface Category {
+  categoryName: string;
+  services: Service[];
+}
+
+interface ServicesSectionProps {
+  data: {
+    title: string;
+    subtitle: string;
+    categories: Category[];
+  };
+}
+
+// ثانياً: هذا هو المكون الفعلي
+const ServicesSection: React.FC<ServicesSectionProps> = ({ data }) => {
+  // إذا لم تكن هناك بيانات، لا تعرض أي شيء
+  if (!data) {
+    return null;
+  }
+
+  const { title, subtitle, categories } = data;
+
+  return (
+    <section className="py-12 bg-gray-50 sm:py-16 lg:py-20">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        {/* عنوان القسم الرئيسي */}
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl">
+            {title}
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 sm:mt-6">
+            {subtitle}
+          </p>
+        </div>
+
+        {/* حاوية الفئات والخدمات */}
+        <div className="mt-12 space-y-16 sm:mt-16">
+          {categories.map((category, index) => (
+            <div key={index}>
+              {/* عنوان الفئة (مثل: خدمات طب الأسنان) */}
+              <h3 className="text-2xl font-semibold text-center text-gray-800 md:text-left">
+                {category.categoryName}
+              </h3>
+              <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {category.services.map((service, serviceIndex) => (
+                  <div key={serviceIndex} className="flex flex-col overflow-hidden bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    {/* صورة الخدمة */}
+                    <div className="relative h-56 w-full">
+                      <Image
+                        src={service.imageUrl}
+                        alt={service.name}
+                        layout="fill"
+                        objectFit="cover"
+                        className="transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    
+                    <div className="flex flex-col flex-1 p-6">
+                      {/* اسم ووصف الخدمة */}
+                      <h4 className="text-xl font-bold text-gray-900">{service.name}</h4>
+                      <p className="mt-3 text-base text-gray-600 flex-1">{service.description}</p>
+                      
+                      {/* زر الحجز */}
+                      <a
+                        href={service.cta.href}
+                        title={service.cta.text}
+                        className="inline-flex items-center justify-center px-6 py-3 mt-6 text-base font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
+                        role="button"
+                      >
+                        {service.cta.text}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ServicesSection;
+
+<<<<< END_FILE: components/sectors/Generic/ServicesSection.tsx >>>>>
+
+>>>>> START_FILE: components/sectors/Generic/TeamMembersSection.tsx <<<<<
+"use client";
+
+import React from 'react';
+import Image from 'next/image';
+
+interface TeamMember {
+  name: string;
+  specialty: string;
+  bio: string;
+  imageUrl: string;
+  experience?: string;
+}
+
+interface TeamMembersSectionProps {
+  data: {
+    title: string;
+    subtitle: string;
+    members: TeamMember[];
+  };
+}
+
+const TeamMembersSection = ({ data }: TeamMembersSectionProps) => {
+  if (!data || !data.members) return null;
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">{data.title}</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">{data.subtitle}</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {data.members.map((member, index) => (
+            <div key={index} className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+                <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400">
+                  {/* Placeholder icon when image is missing */}
+                  <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-center text-gray-900">{member.name}</h3>
+              <p className="text-blue-600 text-center mb-4">{member.specialty}</p>
+              <p className="text-gray-600 text-center text-sm">{member.bio}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TeamMembersSection;
+
+<<<<< END_FILE: components/sectors/Generic/TeamMembersSection.tsx >>>>>
+
+2. PROJECT DIRECTORY TREE:
+.
+./tailwind.config.js
+./package.json
+./postcss.config.mjs
+./next.config.mjs
+./project_structure.txt
+./generate_project_card.sh
+./config.json
+./postcss.config.js
+./phone-input.css
+./components
+./components/sectors
+./components/sectors/Generic
+./components/sectors/Generic/OffersSection.tsx
+./components/sectors/Generic/ProfileSection.tsx
+./components/sectors/Generic/ServicesSection.tsx
+./components/sectors/Generic/TeamMembersSection.tsx
+./components/common
+./components/common/FaqSection.tsx
+./components/common/QrCodeSection.tsx
+./components/common/ContactSection.tsx
+./components/common/InstallPromptHandler.tsx
+./components/common/keep.
+./components/common/HeroSection.tsx
+./components/common/Footer.tsx
+./components/common/Header.tsx
+./components/ui
+./components/ui/card.tsx
+./components/ui/textarea.tsx
+./components/ui/badge.tsx
+./components/ui/checkbox.tsx
+./components/ui/label.tsx
+./components/ui/select.tsx
+./components/ui/input.tsx
+./components/ui/button.tsx
+./components/ui/SmartAmbassadorGuided.tsx
+./create_template_profile.sh
+./package-lock.json
+./public
+./public/globe.svg
+./public/next.svg
+./public/window.svg
+./public/images
+./public/images/doctors
+./public/images/doctors/keep.
+./public/images/services
+./public/images/services/keep.
+./public/vercel.svg
+./public/file.svg
+./tsconfig.json
+./AI_CONTEXT_ENGINE.txt
+./app
+./app/layout.tsx
+./app/favicon.ico
+./app/page.tsx
+./app/manifest.ts
+./app/globals.css
+./app/components
+./app/components/placeholder.txt
+./app/providers.tsx
+./README.md
+./next-env.d.ts
+./PROJECT_CARD.generated.txt
+./project_blueprint.txt
+./project_analysis_for_gemini.txt
+./eslint.config.mjs
+./components.json
+./lib
+./lib/supabaseClient.ts
+./lib/utils.ts
+./template_profile.txt
+./PROJECT_BLUEPRINT.txt
