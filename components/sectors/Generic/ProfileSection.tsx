@@ -1,4 +1,4 @@
-// File: components/sectors/Clinics/ProfileSection.tsx
+// File: components/sectors/Generic/ProfileSection.tsx
 
 "use client";
 

@@ -1,4 +1,4 @@
-// components/sectors/Clinics/ServicesSection.tsx
+// components/sectors/Generic/ServicesSection.tsx
 
 import React from 'react';
 import Image from 'next/image';

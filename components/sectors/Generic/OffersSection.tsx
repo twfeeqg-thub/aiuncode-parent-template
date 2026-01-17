@@ -1,4 +1,4 @@
-// File: components/sectors/Clinics/OffersSection.tsx
+// File: components/sectors/Generic/OffersSection.tsx
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
