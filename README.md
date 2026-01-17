@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 AIUNCODE Parent Template (Generic Edition)
 
-## Getting Started
+## 🎯 الرؤية والهدف (The Vision)
+هذا المشروع ليس مجرد موقع إلكتروني، بل هو **"محرك أعمال" (Business Engine)** مصمم بنظام **Config-Driven UI**. الهدف منه هو تمكين إطلاق منصات قطاعية (طبية، قانونية، تجارية) في دقائق معدودة عبر تعديل ملف إعدادات واحد، مما يقلل تكلفة التطوير بنسبة 90% ويرفع سرعة الدخول للسوق (Time-to-Market).
 
-First, run the development server:
+## 💰 التحليل التجاري (Commercial Value)
+- **القابلية للتوسع:** نظام واحد يخدم مئات القطاعات.
+- **توفير النفقات:** الاعتماد على Supabase كخلفية برمجية (Backend-as-a-Service) وVercel للاستضافة المجانية/المقاسة.
+- **التسويق السيكولوجي:** واجهات مستخدم فائقة السرعة وتحسينات SEO تلقائية لزيادة معدل التحويل (Conversion Rate).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠 البنية التقنية (Tech Stack)
+- **Frontend:** Next.js 14 (App Router) - SSG/ISR optimized.
+- **Styling:** Tailwind CSS + Shadcn UI.
+- **Database:** Supabase (PostgreSQL).
+- **Architecture:** Generic Component Architecture.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📂 هيكل النظام (System Structure)
+- `config.json`: العقل المدبر للمحتوى والهوية البصرية.
+- `/components/sectors/Generic`: المكونات القابلة لإعادة الاستخدام.
+- `/lib/supabaseClient.ts`: جسر البيانات السحابي.
+- `/app/page.tsx`: المايسترو الذي يجمع المكونات بناءً على الإعدادات.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 طريقة التشغيل السريع
+1. `npm install` - لتنصيب المكتبات.
+2. عدل قيم `config.json` بما يناسب مشروعك.
+3. `npm run dev` - أطلق مشروعك محلياً.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+**[AIUNCODE Protocol: Work Smart, Scale Fast]**

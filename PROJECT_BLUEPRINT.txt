@@ -1,0 +1,89 @@
+=== AIUNCODE PROJECT MANIFESTO ===
+Generated on: Sat Jan 17 12:23:39 PM UTC 2026
+
+1. TECH STACK:
+- Framework: Next.js 14 (App Router)
+- Deployment: Vercel
+- Backend/DB: Supabase
+- Styling: Tailwind CSS
+- Architecture: Config-Driven UI (Generic Template)
+
+2. PROJECT STRUCTURE (Verified Structure):
+.
+./tailwind.config.js
+./package.json
+./postcss.config.mjs
+./next.config.mjs
+./project_structure.txt
+./generate_project_card.sh
+./config.json
+./postcss.config.js
+./phone-input.css
+./components
+./components/sectors
+./components/sectors/Generic
+./components/common
+./components/common/FaqSection.tsx
+./components/common/QrCodeSection.tsx
+./components/common/ContactSection.tsx
+./components/common/InstallPromptHandler.tsx
+./components/common/keep.
+./components/common/HeroSection.tsx
+./components/common/Footer.tsx
+./components/common/Header.tsx
+./components/ui
+./components/ui/card.tsx
+./components/ui/textarea.tsx
+./components/ui/badge.tsx
+./components/ui/checkbox.tsx
+./components/ui/label.tsx
+./components/ui/select.tsx
+./components/ui/input.tsx
+./components/ui/button.tsx
+./components/ui/SmartAmbassadorGuided.tsx
+./create_template_profile.sh
+./package-lock.json
+./public
+./public/globe.svg
+./public/next.svg
+./public/window.svg
+./public/images
+./public/images/doctors
+./public/images/services
+./public/vercel.svg
+./public/file.svg
+./tsconfig.json
+./app
+./app/layout.tsx
+./app/favicon.ico
+./app/page.tsx
+./app/manifest.ts
+./app/globals.css
+./app/components
+./app/components/placeholder.txt
+./app/providers.tsx
+./README.md
+./next-env.d.ts
+./PROJECT_CARD.generated.txt
+./project_blueprint.txt
+./project_analysis_for_gemini.txt
+./eslint.config.mjs
+./components.json
+./lib
+./lib/supabaseClient.ts
+./lib/utils.ts
+./template_profile.txt
+./PROJECT_BLUEPRINT.txt
+
+3. CORE LOGIC (The Golden Rule):
+- Project is DATA-DRIVEN via 'config.json'.
+- Components in 'components/sectors/Generic' are re-usable modules.
+- DO NOT create new sector folders unless absolutely necessary. Use 'Generic' components.
+
+4. DIRECTORY GUIDE:
+- /app: Routes and Pages.
+- /components/sectors/Generic: Core UI Logic.
+- /lib: Database & API Utilities.
+- /public: Static assets (Images/Logos).
+
+[STATUS: Operational & Scalable]
