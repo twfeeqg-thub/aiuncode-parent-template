@@ -56,7 +56,10 @@
               "name": "تطوير PWA الاحترافي",
               "description": "تطبيقات ويب تعمل بدون إنترنت، سريعة، وتثبت مباشرة على الهواتف.",
               "imageUrl": "/images/services/pwa-development.jpg",
-              "cta": { "text": "اطلب خدمتك", "href": "#contact" }
+              "cta": {
+                "text": "اطلب خدمتك",
+                "href": "#contact"
+              }
             }
           ]
         }
@@ -98,12 +101,45 @@
       "submitButton": "إرسال الطلب",
       "consentText": "أوافق على معالجة بياناتي للتواصل معي.",
       "fields": {
-        "name": { "show": true, "label": "الاسم", "placeholder": "أدخل اسمك الكريم", "required": true },
-        "email": { "show": true, "label": "البريد الإلكتروني", "placeholder": "example@domain.com", "required": true },
-        "phone": { "show": true, "label": "رقم الواتساب", "placeholder": "5xxxxxxxx", "required": true },
-        "message": { "show": true, "label": "تفاصيل المشروع", "placeholder": "اشرح لنا رؤيتك باختصار...", "required": true },
-        "service": { "show": true, "label": "نوع الخدمة", "options": ["بناء محرك ذكي", "تطبيق PWA", "أتمتة n8n"], "required": true }
+        "name": {
+          "show": true,
+          "label": "الاسم",
+          "placeholder": "أدخل اسمك الكريم",
+          "required": true
+        },
+        "email": {
+          "show": true,
+          "label": "البريد الإلكتروني",
+          "placeholder": "example@domain.com",
+          "required": true
+        },
+        "phone": {
+          "show": true,
+          "label": "رقم الواتساب",
+          "placeholder": "5xxxxxxxx",
+          "required": true
+        },
+        "message": {
+          "show": true,
+          "label": "تفاصيل المشروع",
+          "placeholder": "اشرح لنا رؤيتك باختصار...",
+          "required": true
+        },
+        "service": {
+          "show": true,
+          "label": "نوع الخدمة",
+          "options": [
+            "بناء محرك ذكي",
+            "تطبيق PWA",
+            "أتمتة n8n"
+          ],
+          "required": true
+        }
       }
+    },
+    "qrCode": {
+      "title": "ثبّت تطبيقنا الويب التقدمي",
+      "description": "امسح الكود لفتح التطبيق فوراً على هاتفك والاستمتاع بتجربة كاملة دون الحاجة لمتجر التطبيقات."
     }
   },
   "guidedAssistant": {
@@ -111,10 +147,20 @@
     "buttonLabel": "تحدث مع المساعد الذكي",
     "root": {
       "message": "أهلاً بك في AIUNCODE!",
-      "options": [ 
-        { "text": "أريد بناء منصة ذكية", "nextId": "servicesNode" }, 
-        { "text": "استفسار عن التكلفة", "nextId": "pricingNode" } 
+      "options": [
+        {
+          "text": "أريد بناء منصة ذكية",
+          "nextId": "servicesNode"
+        },
+        {
+          "text": "استفسار عن التكلفة",
+          "nextId": "pricingNode"
+        }
       ]
     }
+  },
+  "theme": {
+    "primary": "262.1 83.3% 57.8%",
+    "radius": "1.5rem"
   }
 }

@@ -1,0 +1,322 @@
+]633;E;echo "=== PROJECT STRUCTURE ===";4249b343-ccae-4f34-8550-97b2cbd4d60a]633;C=== PROJECT STRUCTURE ===
+.
+./postcss.config.js
+./components
+./components/sectors
+./components/sectors/Generic
+./components/sectors/Generic/StatsSection.tsx
+./components/sectors/Generic/ProfileSection.tsx
+./components/sectors/Generic/TrustBar.tsx
+./components/sectors/Generic/CTASection.tsx
+./components/sectors/Generic/FeaturesSection.tsx
+./components/sectors/Generic/TestimonialsSection.tsx
+./components/sectors/Generic/PricingSection.tsx
+./components/sectors/Generic/ServicesSection.tsx
+./components/sectors/Generic/TeamMembersSection.tsx
+./components/sectors/Generic/OffersSection.tsx
+./components/ui
+./components/ui/input.tsx
+./components/ui/button.tsx
+./components/ui/textarea.tsx
+./components/ui/select.tsx
+./components/ui/checkbox.tsx
+./components/ui/card.tsx
+./components/ui/SmartAmbassadorGuided.tsx
+./components/ui/badge.tsx
+./components/ui/label.tsx
+./components/common
+./components/common/QrCodeSection.tsx
+./components/common/InstallPromptHandler.tsx
+./components/common/HeroSection.tsx
+./components/common/ContactSection.tsx
+./components/common/keep.
+./components/common/Header.tsx
+./components/common/FaqSection.tsx
+./components/common/Footer.tsx
+./tsconfig.json
+./project_analysis_for_gemini.txt
+./AI_CONTEXT_ENGINE.txt
+./PROJECT_BLUEPRINT.txt
+./lib
+./lib/supabaseClient.ts
+./lib/utils.ts
+./project_blueprint.txt
+./package.json
+./generate_project_card.sh
+./create_template_profile.sh
+./postcss.config.mjs
+./next-env.d.ts
+./components.json
+./eslint.config.mjs
+./current_state_analysis.txt
+./package-lock.json
+./public
+./public/sw.js
+./public/images
+./public/images/doctors
+./public/images/doctors/keep.
+./public/images/services
+./public/images/services/keep.
+./public/window.svg
+./public/workbox-f1770938.js
+./public/globe.svg
+./public/next.svg
+./public/vercel.svg
+./public/file.svg
+./public/swe-worker-5c72df51bb1f6ee0.js
+./phone-input.css
+./template_profile.txt
+./project_structure.txt
+./tailwind.config.js
+./PROJECT_CARD.generated.txt
+./README.md
+./app
+./app/components
+./app/components/placeholder.txt
+./app/layout.tsx
+./app/providers.tsx
+./app/favicon.ico
+./app/globals.css
+./app/page.tsx
+./app/manifest.ts
+./next.config.mjs
+./config.json
+
+=== FILE: app/globals.css ===
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+=== FILE: app/layout.tsx ===
+// app/layout.tsx
+
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import config from "../config.json";
+import { ClientProviders } from "./providers"; // --- جديد: استيراد المكون الوسيط
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: config.pwa.appName,
+  description: config.pwa.appDescription,
+  manifest: "/manifest.webmanifest", // تعديل المسار ليكون متوافقًا مع Vercel
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/public/apple-icon.png", // تعديل المسار ليكون صحيحًا
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: config.pwa.themeColor,
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ar" dir="rtl">
+      <body className={inter.className}>
+        {/* --- جديد: تغليف المحتوى بـ ClientProviders --- */}
+        <ClientProviders>
+          {children}
+        </ClientProviders>
+      </body>
+    </html>
+  );
+}
+
+=== FILE: components/ui/button.tsx ===
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
+
+export { Button, buttonVariants }
+
+=== FILE: tailwind.config.js / ts ===
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+}
