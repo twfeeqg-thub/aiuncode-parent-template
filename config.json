@@ -22,13 +22,28 @@
     "showQrCode": true,
     "showContact": true,
     "showFooter": true,
-    "showSmartAssistant": true
+    "showSmartAssistant": true,
+    "showFeatures": true,
+    "showCTA": true,
+    "showTestimonials": true,
+    "showStats": true,
+    "showPricing": true,
+    "showTrustBar": true
   },
   "content": {
     "hero": {
       "title": "مستقبل أعمالك يبدأ مع AIUNCODE",
       "subtitle": "نحول أفكارك إلى واقع رقمي باستخدام المحركات الذكية، صفحات الهبوط فائقة السرعة، وتطبيقات PWA المتطورة.",
       "ctaButton": "استكشف الحلول الذكية"
+    },
+    "trustBar": {
+      "title": "شركاء وثقوا بنا"
+    },
+    "statsSection": {
+      "title": "إنجازاتنا بالأرقام"
+    },
+    "featuresSection": {
+      "title": "لماذا يختار المحترفون AIUNCODE؟"
     },
     "servicesSection": {
       "title": "حلولنا الرقمية المتكاملة",
@@ -47,6 +62,12 @@
         }
       ]
     },
+    "pricingSection": {
+      "title": "خطط الاستثمار الرقمي"
+    },
+    "testimonialsSection": {
+      "title": "قالوا عن تجربة AIUNCODE"
+    },
     "teamMembersSection": {
       "title": "خبراء AIUNCODE",
       "subtitle": "فريق تقني متخصص لضمان نجاح مشروعك.",
@@ -58,6 +79,9 @@
           "imageUrl": "/images/doctors/doctor-male-1.jpg"
         }
       ]
+    },
+    "ctaSection": {
+      "title": "هل أنت مستعد لنقل أعمالك للمستوى التالي؟"
     },
     "faqSection": {
       "title": "الأسئلة الشائعة",
@@ -87,7 +111,10 @@
     "buttonLabel": "تحدث مع المساعد الذكي",
     "root": {
       "message": "أهلاً بك في AIUNCODE!",
-      "options": [ { "text": "أريد بناء منصة ذكية", "nextId": "servicesNode" }, { "text": "استفسار عن التكلفة", "nextId": "pricingNode" } ]
+      "options": [ 
+        { "text": "أريد بناء منصة ذكية", "nextId": "servicesNode" }, 
+        { "text": "استفسار عن التكلفة", "nextId": "pricingNode" } 
+      ]
     }
   }
 }
