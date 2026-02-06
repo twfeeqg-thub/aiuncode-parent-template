@@ -1,5 +1,5 @@
 {
-  "sessionId": "081cefb6ecef4be2b3dcb48b5667fc89",
+  "sessionId": "932a9eeaa7dc4bc68c687e3f9dab29c7",
   "action": "sendMessage",
   "chatInput": "\n{\n  \"sector\": \"juice\",\n  \"landingPageSections\": {\n    \"mandatory\": [\n      \"Header\",\n      \"Hero Section\",\n      \"قائمة المنتجات\",\n      \"الميزات التنافسية\",\n      \"Call To Action\",\n      \"FAQ\",\n      \"Footer\"\n    ],\n    \"optional\": [\n      \"إحصاءات\",\n      \"شريط الثقة\"\n    ],\n    \"specialized\": [\n      \"الفروع والمواقع\"\n    ]\n  },\n  \"aiAssistantKnowledge\": [\n    \"الأسئلة الأساسية (مواعيد العمل، الموقع، إلخ)\",\n    \"الأسئلة المحسّنة (تفاصيل المنتجات، المكونات)\",\n    \"أسئلة الطلبات (حالة الطلب، التوصيل)\"\n  ],\n  \"pwaFeatures\": {\n    \"mandatory\": [\n      \"الشاشة الرئيسية\",\n      \"الإشعارات\",\n      \"الطلبات\",\n      \"العروض\",\n      \"الدردشة\",\n      \"الملف الشخصي\"\n    ],\n    \"additional\": [\n      \"التذكيرات\",\n      \"الدعوات\",\n      \"الولاء\"\n    ],\n    \"specialized\": [\n      \"قائمة المفضلة\",\n      \"تقييم الطلبات\"\n    ]\n  },\n  \"contactInfo\": {\n    \"email\": \"ebnsalemalawal@gmail.com\",\n    \"whatsapp\": \"\",\n    \"other\": \"\"\n  },\n  \"termsAccepted\": true\n}\n"
 }
